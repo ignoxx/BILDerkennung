@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BILD or NOT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <style>
+        #result {
+            display: none;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 100px;
+        }
+
+        #resultImg {
+            margin-left: auto;
+            margin-right: auto;
+
+            width: 200px;
+            height: 200px;
+        }
+
+        #submitBtn {
+            width: 100%;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar is-dark is-medium">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#" style="font-weight:bold;">
+                    BILDerkennung
+                </a>
+                <span class="navbar-burger burger" data-target="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a href="#" class="navbar-item is-active">Home</a>
+                    <a href="#" class="navbar-item">About</a>
+                    <!-- <a href="#" class="navbar-item">Forum</a>
+                    <a href="#" class="navbar-item">Shop</a>
+                    <a href="#" class="navbar-item">Examples</a> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="container">
+            <p class="subtitle">
+                Find out if you are a <strong>BILD</strong>writer or not!
+            </p>
+            <textarea id="articleText" class="textarea" placeholder="Put in your Article" name="article"></textarea>
+            <br>
+            <input id="submitBtn" type="button" class="button is-danger" value="Submit your article"> <br> <br>
+
+            <div class="tile notification is-dark" id="result">
+                <p id="resultText"> BILD </p>
+                <img id="resultImg"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Logo_BILD.svg/2000px-Logo_BILD.svg.png">
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Project</strong> created during the Axel Springer Bootcamp. <br>
+                Learn more <a href="#">about</a>
+            </p>
+        </div>
+    </footer>
+    <script type="text/javascript">
+
+        $(function () {
+            var burger = document.querySelector('.burger');
+            var nav = document.querySelector('#' + burger.dataset.target);
+            burger.addEventListener('click', function () {
+                burger.classList.toggle('is-active');
+                nav.classList.toggle('is-active');
+            });
+
+            $("#submitBtn").click(() => {
+                $.ajax({
+                    method: "POST",
+                    data: { article: $('#articleText').val() },
+                    url: "api/classify/"
+                })
+                    .done((data) => {
+                        $("#resultImg").attr("src", data.imgUrl);
+                        $("#resultText").text(data.resultText);
+                        $("#result").show();
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>
