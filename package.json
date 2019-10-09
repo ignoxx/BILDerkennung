@@ -1,0 +1,24 @@
+{
+  "name": "bilderkennung",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JTheinert/BILDerkennung.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JTheinert/BILDerkennung/issues"
+  },
+  "homepage": "https://github.com/JTheinert/BILDerkennung#readme",
+  "description": "",
+  "dependencies": {
+    "bayes": "0.0.7",
+    "bulma": "^0.7.5",
+    "express": "^4.17.1"
+  }
+}
