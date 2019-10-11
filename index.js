@@ -1,4 +1,4 @@
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
 const express = require('express');
 const webserver = express();
 const classifier = require('./src/classifier')

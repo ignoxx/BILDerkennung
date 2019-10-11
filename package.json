@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cypress run",
+    "ci": "npm start & wait-on http://localhost:8080 & npm test",
     "start": "node index.js"
   },
   "repository": {
@@ -20,6 +21,8 @@
   "dependencies": {
     "bayes": "0.0.7",
     "bulma": "^0.7.5",
-    "express": "^4.17.1"
+    "cypress": "^3.4.1",
+    "express": "^4.17.1",
+    "wait-on": "^3.3.0"
   }
 }
