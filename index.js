@@ -3,6 +3,7 @@ const express = require('express');
 const webserver = express();
 const classifier = require('./src/classifier')
 const bodyParser = require('body-parser');
+
 webserver.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -12,6 +13,6 @@ function serveIndex(request, response) {
 
 webserver.get('/', serveIndex);
 webserver.post('/api/classify', classifier.handle);
-webserver.listen(port, ()=> console.log("Running on port..", port));
+webserver.listen(port, () => console.log("Running on port..", port));
 
 
