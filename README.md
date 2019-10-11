@@ -1,4 +1,5 @@
 # BILDerkennung
+![TestStatus](https://travis-ci.org/IgnasKavaliauskas/BILDerkennung.svg?branch=master)
 ### A small project created during the Axel Springer Bootcamp.
 Find out if your article is identified as a **BILD** article or **NOT**
 
